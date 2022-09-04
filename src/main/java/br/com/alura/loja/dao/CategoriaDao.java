@@ -17,7 +17,7 @@ public class CategoriaDao {
 	}
 	
 	public void atualizar(Categoria categoria) {
-		categoria = em.merge(categoria);
+		em.merge(categoria);
 	}
 	
 	public void remover(Categoria categoria) {
