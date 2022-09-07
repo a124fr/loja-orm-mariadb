@@ -62,7 +62,6 @@ public class CadastroDePedido3 {
 		ClienteDao clienteDao = new ClienteDao(em);
 		PedidoDao pedidoDao = new PedidoDao(em);
 		
-		
 		em.getTransaction().begin();// início
 		
 		categoriaDao.cadastrar(celulares);
