@@ -27,9 +27,14 @@ public class CadastroDePedido3 {
 		PedidoDao pedidoDao = new PedidoDao(em);
 		ClienteDao clienteDao = new ClienteDao(em);
 		
-		Pedido pedido = em.find(Pedido.class, 1l);
+//		Pedido pedido = em.find(Pedido.class, 1l);
+		Pedido pedido = pedidoDao.bucarPedidoComCliente(1l);
 //		System.out.println(pedido.getData());
-		System.out.println(pedido.getItensPedido().size());
+//		System.out.println(pedido.getItensPedido().size());
+		
+		em.close();
+		
+		System.out.println(pedido.getCliente().getNome());
 		
 	}
 	
