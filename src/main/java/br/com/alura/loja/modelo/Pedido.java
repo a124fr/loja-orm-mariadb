@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class Pedido {
 	private Long id;
 	private LocalDate data = LocalDate.now();
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Cliente cliente;
 	
 	@Column(name = "valor_total")
@@ -74,8 +75,16 @@ public class Pedido {
 	
 	public void adicionarItem(ItemPedido item) {
 		item.setPedido(this);
-		this.itensPedido.add(item);
+		this.getItensPedido().add(item);
 		
 		this.valorTotal = this.valorTotal.add(item.getValor());
+	}
+
+	public List<ItemPedido> getItensPedido() {
+		return itensPedido;
+	}
+
+	public void setItensPedido(List<ItemPedido> itensPedido) {
+		this.itensPedido = itensPedido;
 	}
 }
