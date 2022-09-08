@@ -1,6 +1,7 @@
 package br.com.alura.loja.testes.jpa2;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -27,11 +28,10 @@ public class CadastroDePedido4 {
 		PedidoDao pedidoDao = new PedidoDao(em);
 		ClienteDao clienteDao = new ClienteDao(em);
 		
-		
-
-		
-
-		
+//		List<Produto> produtos = produtoDao.buscarPorParametrosComCriteria("PS5", null, null);
+//		List<Produto> produtos = produtoDao.buscarPorParametrosComCriteria("PS5", LocalDate.now(), null);
+		List<Produto> produtos = produtoDao.buscarPorParametrosComCriteria(null, null, new BigDecimal("800"));
+		produtos.forEach(System.out::println);		
 	}
 	
 	private static void popularBancoDeDados() {
