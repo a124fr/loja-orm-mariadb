@@ -31,7 +31,7 @@ public class CadastroDePedido4 {
 //		List<Produto> produtos = produtoDao.buscarPorParametrosComCriteria("PS5", LocalDate.now(), null);
 //		List<Produto> produtos = produtoDao.buscarPorParametrosComCriteria(null, null, new BigDecimal("800"));
 		
-		Categoria categoria = em.find(Categoria.class, new CategoriaId("CELULARES", "XPTO"));
+		Categoria categoria = em.find(Categoria.class, new CategoriaId("CELULARES", "XPTO"));// Fazendo a consulta com chave composta.
 		System.out.println(categoria);
 		
 		List<Produto> produtos = produtoDao.buscaPorListaDeParametrosUsandoOperadorORComIsNull(null, null, new BigDecimal("800"));		
