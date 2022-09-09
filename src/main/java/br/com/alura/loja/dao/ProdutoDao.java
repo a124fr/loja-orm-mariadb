@@ -138,4 +138,16 @@ public class ProdutoDao {
 		query.where(filtros);		
 		return this.em.createQuery(query).getResultList();
 	}
+	
+	// uma forma de fazer consulta dinamica
+    public List<Produto> buscaPorListaDeParametrosUsandoOperadorORComIsNull(String nome, LocalDate dataCadastro, BigDecimal preco) {
+        String jpql = "SELECT p FROM Produto p WHERE (:nome IS NULL OR p.nome=:nome) AND (:preco IS NULL OR p.preco=:preco) AND" +
+                " (:dataCadastro IS NULL OR p.dataCadastro =: dataCadastro)";
+
+        return this.em.createQuery(jpql,Produto.class)
+                .setParameter("nome", nome)
+                .setParameter("preco", preco)
+                .setParameter("dataCadastro", dataCadastro)
+                .getResultList();
+    }
 }

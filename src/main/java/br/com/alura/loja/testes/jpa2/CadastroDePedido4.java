@@ -21,7 +21,7 @@ import br.com.alura.loja.vo.RelatorioDeVendasVo;
 public class CadastroDePedido4 {
 
 	public static void main(String[] args) {
-//		popularBancoDeDados();
+		popularBancoDeDados();
 		
 		EntityManager em = JPAUtil.getEntityMannger();
 		ProdutoDao produtoDao = new ProdutoDao(em);
@@ -30,7 +30,9 @@ public class CadastroDePedido4 {
 		
 //		List<Produto> produtos = produtoDao.buscarPorParametrosComCriteria("PS5", null, null);
 //		List<Produto> produtos = produtoDao.buscarPorParametrosComCriteria("PS5", LocalDate.now(), null);
-		List<Produto> produtos = produtoDao.buscarPorParametrosComCriteria(null, null, new BigDecimal("800"));
+//		List<Produto> produtos = produtoDao.buscarPorParametrosComCriteria(null, null, new BigDecimal("800"));
+		
+		List<Produto> produtos = produtoDao.buscaPorListaDeParametrosUsandoOperadorORComIsNull(null, null, new BigDecimal("800"));		
 		produtos.forEach(System.out::println);		
 	}
 	
