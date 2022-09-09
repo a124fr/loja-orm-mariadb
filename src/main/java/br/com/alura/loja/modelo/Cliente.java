@@ -18,7 +18,6 @@ public class Cliente {
 	@Embedded
 	private DadosPessoais dadosPessoais;
 	
-	
 	public Cliente() {
 	}
 	

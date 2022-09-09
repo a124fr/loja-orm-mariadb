@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "produtos")
 @NamedQuery(name = "Produto.buscarPorNomeDaCategoria", 
-query = "SELECT p FROM Produto p WHERE p.categoria.nome = :nomeDaCategoria")
+query = "SELECT p FROM Produto p WHERE p.categoria.id.nome = :nomeDaCategoria")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Produto {
 

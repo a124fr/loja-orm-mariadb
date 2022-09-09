@@ -1,7 +1,6 @@
 package br.com.alura.loja.testes.jpa2;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,12 +10,12 @@ import br.com.alura.loja.dao.ClienteDao;
 import br.com.alura.loja.dao.PedidoDao;
 import br.com.alura.loja.dao.ProdutoDao;
 import br.com.alura.loja.modelo.Categoria;
+import br.com.alura.loja.modelo.CategoriaId;
 import br.com.alura.loja.modelo.Cliente;
 import br.com.alura.loja.modelo.ItemPedido;
 import br.com.alura.loja.modelo.Pedido;
 import br.com.alura.loja.modelo.Produto;
 import br.com.alura.loja.util.JPAUtil;
-import br.com.alura.loja.vo.RelatorioDeVendasVo;
 
 public class CadastroDePedido4 {
 
@@ -31,6 +30,9 @@ public class CadastroDePedido4 {
 //		List<Produto> produtos = produtoDao.buscarPorParametrosComCriteria("PS5", null, null);
 //		List<Produto> produtos = produtoDao.buscarPorParametrosComCriteria("PS5", LocalDate.now(), null);
 //		List<Produto> produtos = produtoDao.buscarPorParametrosComCriteria(null, null, new BigDecimal("800"));
+		
+		Categoria categoria = em.find(Categoria.class, new CategoriaId("CELULARES", "XPTO"));
+		System.out.println(categoria);
 		
 		List<Produto> produtos = produtoDao.buscaPorListaDeParametrosUsandoOperadorORComIsNull(null, null, new BigDecimal("800"));		
 		produtos.forEach(System.out::println);		
